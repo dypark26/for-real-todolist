@@ -17,12 +17,13 @@ function App() {
       isDone: true,
     },
   ];
-
+  // 투두리스트 생성
   const [todolist, setTodolist] = useState(initialtodo);
 
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
+  // 추가기능 구현
   const addTodo = (event) => {
     event.preventDefault();
 
