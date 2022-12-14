@@ -1,7 +1,6 @@
 import { useState } from "react";
 import styled from "styled-components";
 import { v4 as uuidv4 } from "uuid";
-import TodoList from "./pages/TodoList";
 
 function App() {
   const initialtodo = [
@@ -14,12 +13,6 @@ function App() {
     {
       id: "2",
       title: "오실은말이조",
-      content: "real 아닙니다만",
-      isDone: true,
-    },
-    {
-      id: "3",
-      title: "육실은말이조",
       content: "real 아닙니다만",
       isDone: true,
     },
@@ -49,12 +42,6 @@ function App() {
     setContent("");
   };
 
-  const deleteButton = (todoId) => {
-    setTodolist(
-      todolist.filter(todo => todo.id !== todoId)
-    )
-  }
-
   // console.log(todolist)z;
 
   return (
@@ -74,7 +61,16 @@ function App() {
         <button>추가해랏!</button>
       </form>
       <div>
-        <TodoList todolist={todolist} deleteButton={deleteButton}></TodoList>
+        {todolist.map((todo) => {
+          return (
+            <div key={todo.id}>
+              <div>{todo.title}</div>
+              <div>{todo.content}</div>
+              <button>삭제</button>
+              <button>완료</button>
+            </div>
+          );
+        })}
       </div>
     </>
   );
